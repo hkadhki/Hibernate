@@ -5,10 +5,9 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,10 +16,12 @@ public class Person {
 
     @EmbeddedId
     private Information information;
-    @Column
-    private String phone_number;
-    @Column
-    private String city_of_living;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "city_of_living")
+    private String cityOfLiving;
+
+
 
 
     @Override
@@ -29,7 +30,31 @@ public class Person {
                 "name=" + information.getName() +
                 "surname=" + information.getSurname() +
                 "age=" + information.getAge() +
-                "phone_number=" + phone_number +
-                "city_of_living" + city_of_living + "}";
+                "phone_number=" + phoneNumber +
+                "city_of_living" + cityOfLiving + "}";
+    }
+
+    public String getPhoneNumber(){
+        return phoneNumber;
+    }
+
+    public String getCityOfLiving(){
+        return cityOfLiving;
+    }
+
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setCityOfLiving(String cityOfLiving){
+        this.cityOfLiving = cityOfLiving;
+    }
+
+    public Information getInformation(){
+        return information;
+    }
+
+    public void setInformation(Information information){
+        this.information = information;
     }
 }

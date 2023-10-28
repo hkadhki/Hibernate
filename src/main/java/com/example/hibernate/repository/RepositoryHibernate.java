@@ -15,7 +15,7 @@ public class RepositoryHibernate {
     private EntityManager entityManager;
 
     public List<Person> getPersonsByCity(String city){
-        return entityManager.createQuery("from Person where city_of_living = '" + city + "'",Person.class).getResultList();
+        return entityManager.createQuery("from Person p where p.cityOfLiving = :city",Person.class).setParameter("city", city).getResultList();
     }
 
 
